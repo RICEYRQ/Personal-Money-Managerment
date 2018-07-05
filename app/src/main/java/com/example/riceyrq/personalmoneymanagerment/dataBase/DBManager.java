@@ -26,8 +26,11 @@ public class DBManager {
     public void register(User user) throws Exception{
         db.beginTransaction();
         try {
+            db.execSQL("insert into user values('" + user.getUserName() + "','" + user.getUserPas()
+                        + "','" + user.getPasQuestion() + "','" + user.getPasAnswer() + "')");
+            /*String username = user.getUserName().trim();
             db.execSQL("insert into user values(?,?,?,?)",
-                    new Object[]{user.getUserName(), user.getUserPas(), user.getPasQuestion(), user.getPasAnswer()});
+                    new Object[]{username, user.getUserPas(), user.getPasQuestion().trim(), user.getPasAnswer().trim()});*/
             db.setTransactionSuccessful();
         } finally {
             db.endTransaction();
@@ -37,7 +40,7 @@ public class DBManager {
 
     //登录
     public boolean login(User user) throws Exception {
-        Cursor c = db.rawQuery("select * from user where username=" + user.getUserName() + " and password=" + user.getUserPas(), null);
+        Cursor c = db.rawQuery("select * from user where username='" + user.getUserName() + "' and password='" + user.getUserPas() + "'", null);
         while (c.moveToNext()){
             c.close();
             return true;
@@ -60,7 +63,7 @@ public class DBManager {
 
     //判断当前用户名是否存在
     public boolean isNameExsist(User user) throws Exception{
-        Cursor c = db.rawQuery("select * from user where username=" + user.getUserName(), null);
+        Cursor c = db.rawQuery("select * from user where username='" + user.getUserName() + "'", null);
         while (c.moveToNext()){
             c.close();
             return true;
@@ -71,7 +74,7 @@ public class DBManager {
 
     //获取密保问题及答案
     public User getPasQueAndAns(User user) throws Exception{
-        Cursor c = db.rawQuery("select * from user where username=" + user.getUserName(), null);
+        Cursor c = db.rawQuery("select * from user where username='" + user.getUserName() + "'", null);
         while (c.moveToNext()){
             user.setPasQuestion(c.getString(c.getColumnIndex("pasquestion")));
             user.setPasAnswer(c.getString(c.getColumnIndex("pasanswer")));
@@ -128,7 +131,7 @@ public class DBManager {
     //获取某用户全部信息
     public List<Message> getUserMessage(String username){
         ArrayList<Message> messages = new ArrayList<>();
-        Cursor c = db.rawQuery("select * from message where username=" + username, null);
+        Cursor c = db.rawQuery("select * from message where username='" + username + "'", null);
         while (c.moveToNext()){
             Message message = new Message();
             message.setUserName(c.getString(c.getColumnIndex("username")));
@@ -148,7 +151,7 @@ public class DBManager {
         ArrayList<Message> messages = new ArrayList<>();
         long firstDayOfMonth = TimeUtil.firstDayOfMonth(year, month);
         long lastDayOfMonth = TimeUtil.lastDayOfMonth(year, month);
-        Cursor c = db.rawQuery("select * from message where username=" + username + " and time>=" + firstDayOfMonth + " and time<=" + lastDayOfMonth, null);
+        Cursor c = db.rawQuery("select * from message where username='" + username + "' and time>=" + firstDayOfMonth + " and time<=" + lastDayOfMonth, null);
         while (c.moveToNext()){
             Message message = new Message();
             message.setUserName(c.getString(c.getColumnIndex("username")));

@@ -1,20 +1,28 @@
 package com.example.riceyrq.personalmoneymanagerment.acitvity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.riceyrq.personalmoneymanagerment.R;
+import com.example.riceyrq.personalmoneymanagerment.dataBase.DBManager;
+import com.example.riceyrq.personalmoneymanagerment.define.User;
+import com.example.riceyrq.personalmoneymanagerment.util.ToastUtil;
 
-public class Login extends AppCompatActivity {
+public class Login extends Activity {
 
     private EditText edUsername;
     private ImageView ivUsernameCancel;
@@ -24,11 +32,17 @@ public class Login extends AppCompatActivity {
     private CheckBox cbRemPas;
     private Button btRegister;
     private Button btLogin;
+    private DBManager dbManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){//4.4 全透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
 
         edUsername = (EditText) findViewById(R.id.et_userName);
         ivUsernameCancel = (ImageView) findViewById(R.id.iv_unameClear);
@@ -38,6 +52,19 @@ public class Login extends AppCompatActivity {
         cbRemPas = (CheckBox) findViewById(R.id.cb_checkbox);
         btRegister = (Button) findViewById(R.id.btn_register);
         btLogin = (Button) findViewById(R.id.btn_login);
+
+        dbManager = new DBManager(getApplicationContext());
+        SharedPreferences sharedPreferences = getSharedPreferences("np", MODE_PRIVATE);
+        edUsername.setText(sharedPreferences.getString("name", ""));
+        edPassword.setText(sharedPreferences.getString("pas", ""));
+
+        if (!edPassword.getText().toString().equals("")){
+            cbRemPas.setChecked(true);
+        } else {
+            cbRemPas.setChecked(false);
+        }
+
+
 
         edUsername.addTextChangedListener(new TextWatcher() {
             @Override
@@ -101,7 +128,11 @@ public class Login extends AppCompatActivity {
         ivPasswordShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (edPassword.getText().toString().equals("")){
+                    return;
+                }
                 int inputType = edPassword.getInputType();
+                int select = edPassword.getSelectionEnd();
                 if (inputType == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD){//密码可见状态
                     //更换为密码隐藏状态
                     edPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
@@ -111,6 +142,7 @@ public class Login extends AppCompatActivity {
                     edPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     //ivPasswordShow 更换为闭眼
                 }
+                edPassword.setSelection(select);
             }
         });
 
@@ -127,9 +159,58 @@ public class Login extends AppCompatActivity {
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                boolean loginOK = false;
+                boolean userExsist = false;
+                User user = new User();
+                user.setUserName(edUsername.getText().toString());
+                user.setUserPas(edPassword.getText().toString());
+                if (user.getUserName().equals("")){
+                    ToastUtil.showToast(getApplicationContext(), "用户名不能为空！");
+                    return;
+                } else if (user.getUserPas().equals("")){
+                    ToastUtil.showToast(getApplicationContext(), "密码不能为空！");
+                    return;
+                } else{
+                    try {
+                        userExsist = dbManager.isNameExsist(user);
+                    } catch (Exception e) {
+                        ToastUtil.showToast(getApplicationContext(), "检测用户名是否存在失败！");
+                        return;
+                    }
+                    if (!userExsist){
+                        ToastUtil.showToast(getApplicationContext(), "用户名不存在！");
+                    } else {
+                        try {
+                            loginOK = dbManager.login(user);
+                            if (loginOK){
+                                boolean isRemPas = cbRemPas.isChecked();
+                                SharedPreferences sharedPreferences = getSharedPreferences("np", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                if (isRemPas) {
+                                    editor.putString("name", user.getUserName());
+                                    editor.putString("pas", user.getUserPas());
+                                } else {
+                                    editor.putString("name", "");
+                                    editor.putString("pas", "");
+                                }
+                                editor.apply();
+                                ToastUtil.showToast(getApplicationContext(), "登录成功！");
+                            } else {
+                                ToastUtil.showToast(getApplicationContext(), "密码错误！");
+                            }
+                        } catch (Exception e) {
+                            ToastUtil.showToast(getApplicationContext(), "登录失败！");
+                        }
+                    }
+                }
             }
         });
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dbManager.closeDB();
     }
 }

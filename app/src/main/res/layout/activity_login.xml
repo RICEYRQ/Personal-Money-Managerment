@@ -20,7 +20,7 @@
         android:scaleType="centerCrop"/>
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/title_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -34,7 +34,7 @@
         android:id="@+id/rl_userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/title"
+        android:layout_below="@id/title_login"
         android:layout_marginTop="40dp">
 
         <ImageView
@@ -68,12 +68,13 @@
 
         <ImageView
             android:id="@+id/iv_unameClear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            android:background="@color/colorPrimaryDark"/>
 
     </RelativeLayout>
 
@@ -115,23 +116,33 @@
             android:inputType="textPassword"
             android:textSize="15sp" />
 
-        <ImageView
-            android:id="@+id/iv_pwdClear"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="20dp"
-            android:visibility="invisible" />
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true">
 
-        <ImageView
-            android:id="@+id/iv_pwdShow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="20dp"
-            android:visibility="visible" />
+            <ImageView
+                android:id="@+id/iv_pwdClear"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:visibility="invisible"
+                android:background="@color/colorPrimaryDark"/>
+
+            <ImageView
+                android:id="@+id/iv_pwdShow"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:visibility="visible"
+                android:background="@color/colorPrimaryDark"/>
+
+        </LinearLayout>
+
+
 
     </RelativeLayout>
 
@@ -149,19 +160,20 @@
         android:textColor="#666666"
         android:textSize="15sp" />
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/rl_buttons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cb_checkbox"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
         android:gravity="center">
 
 
         <Button
             android:id="@+id/btn_register"
-            android:layout_width="340dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:gravity="center"
@@ -172,7 +184,7 @@
 
         <Button
             android:id="@+id/btn_login"
-            android:layout_width="340dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
@@ -186,6 +198,6 @@
 
 
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>

@@ -9,4 +9,324 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".acitvity.Register">
 
+    <TextView
+        android:id="@+id/title_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:text="注册"
+        android:textColor="#000"
+        android:textSize="23sp"
+        android:typeface="monospace" />
+
+    <RelativeLayout
+        android:id="@+id/rl_userName_rg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_register"
+        android:gravity="center"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/iv_userIconName_rg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+
+            android:paddingBottom="15dp"
+            android:paddingLeft="30dp"
+            android:paddingTop="15dp" />
+
+        <View
+            android:id="@+id/viewName_rg"
+            android:layout_width="1dip"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_userIconName" />
+
+        <EditText
+            android:id="@+id/et_userName_rg"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/viewName"
+            android:background="@null"
+            android:ems="19"
+            android:hint="  用户名"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/iv_unameClear_rg"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:visibility="invisible"
+            android:background="@color/colorPrimaryDark"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_userPassword_rg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_userName_rg"
+        android:gravity="center"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/iv_userIconPwd_rg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+
+            android:paddingBottom="15dp"
+            android:paddingLeft="30dp"
+            android:paddingTop="15dp" />
+
+        <View
+            android:id="@+id/viewPwd_rg"
+            android:layout_width="1dip"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_userIconName" />
+
+        <EditText
+            android:id="@+id/et_password_rg"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/viewName"
+            android:background="@null"
+            android:ems="19"
+            android:hint=" 密码"
+            android:inputType="textPassword"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true">
+
+            <ImageView
+                android:id="@+id/iv_pwdClear_rg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:visibility="invisible"
+                android:background="@color/colorPrimaryDark"/>
+
+            <ImageView
+                android:id="@+id/iv_pwdShow_rg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:visibility="visible"
+                android:background="@color/colorPrimaryDark"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_userPassword2_rg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_userPassword_rg"
+        android:gravity="center"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/iv_userIconPwd2_rg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+
+            android:paddingBottom="15dp"
+            android:paddingLeft="30dp"
+            android:paddingTop="15dp" />
+
+        <View
+            android:id="@+id/viewPwd2_rg"
+            android:layout_width="1dip"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_userIconName" />
+
+        <EditText
+            android:id="@+id/et_password2_rg"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/viewName"
+            android:background="@null"
+            android:ems="19"
+            android:hint=" 确认密码"
+            android:inputType="textPassword"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true">
+
+            <ImageView
+                android:id="@+id/iv_pwdClear2_rg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:visibility="invisible"
+                android:background="@color/colorPrimaryDark"/>
+
+            <ImageView
+                android:id="@+id/iv_pwdShow2_rg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:visibility="visible"
+                android:background="@color/colorPrimaryDark"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_pasQue_rg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_userPassword2_rg"
+        android:gravity="center"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/iv_pasQue_rg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+
+            android:paddingBottom="15dp"
+            android:paddingLeft="30dp"
+            android:paddingTop="15dp" />
+
+        <View
+            android:id="@+id/viewPasQue_rg"
+            android:layout_width="1dip"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_userIconName" />
+
+        <EditText
+            android:id="@+id/et_pasQue_rg"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/viewName"
+            android:background="@null"
+            android:ems="19"
+            android:hint="  密保问题"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/iv_pasQueClear_rg"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:visibility="invisible"
+            android:background="@color/colorPrimaryDark"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_pasAus_rg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_pasQue_rg"
+        android:gravity="center"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/iv_pasAus_rg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+
+            android:paddingBottom="15dp"
+            android:paddingLeft="30dp"
+            android:paddingTop="15dp" />
+
+        <View
+            android:id="@+id/pasAus_rg"
+            android:layout_width="1dip"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_userIconName" />
+
+        <EditText
+            android:id="@+id/et_pasAus_rg"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/viewName"
+            android:background="@null"
+            android:ems="19"
+            android:hint="  密保答案"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/iv_pasAusClear_rg"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:visibility="invisible"
+            android:background="@color/colorPrimaryDark"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_register_rg"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_pasAus_rg"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:text="注册"
+        android:textColor="#fff"
+        android:textSize="18sp" />
+
+
+
+
+
+
+
 </RelativeLayout>

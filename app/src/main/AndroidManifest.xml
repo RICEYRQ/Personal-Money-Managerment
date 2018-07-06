@@ -15,7 +15,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".acitvity.Register"></activity>
+        <activity android:name=".acitvity.Register" />
+        <activity android:name=".acitvity.CheckName" />
+        <activity android:name=".acitvity.CheckQueAus" />
+        <activity android:name=".acitvity.SetPas"></activity>
     </application>
 
 </manifest>

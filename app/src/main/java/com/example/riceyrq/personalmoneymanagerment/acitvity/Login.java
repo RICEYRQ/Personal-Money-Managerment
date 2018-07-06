@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.riceyrq.personalmoneymanagerment.R;
 import com.example.riceyrq.personalmoneymanagerment.dataBase.DBManager;
@@ -30,6 +31,7 @@ public class Login extends Activity {
     private ImageView ivPasswordCancel;
     private ImageView ivPasswordShow;
     private CheckBox cbRemPas;
+    private TextView tvFindPas;
     private Button btRegister;
     private Button btLogin;
     private DBManager dbManager;
@@ -50,6 +52,7 @@ public class Login extends Activity {
         ivPasswordCancel = (ImageView) findViewById(R.id.iv_pwdClear);
         ivPasswordShow = (ImageView) findViewById(R.id.iv_pwdShow);
         cbRemPas = (CheckBox) findViewById(R.id.cb_checkbox);
+        tvFindPas = (TextView) findViewById(R.id.tv_findPas);
         btRegister = (Button) findViewById(R.id.btn_register);
         btLogin = (Button) findViewById(R.id.btn_login);
 
@@ -60,6 +63,8 @@ public class Login extends Activity {
 
         if (!edPassword.getText().toString().equals("")){
             cbRemPas.setChecked(true);
+            ivUsernameCancel.setVisibility(View.VISIBLE);
+            ivPasswordCancel.setVisibility(View.VISIBLE);
         } else {
             cbRemPas.setChecked(false);
         }
@@ -143,6 +148,17 @@ public class Login extends Activity {
                     //ivPasswordShow 更换为闭眼
                 }
                 edPassword.setSelection(select);
+            }
+        });
+
+        tvFindPas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = edUsername.getText().toString();
+                Intent intent = new Intent();
+                intent.putExtra("username", name);
+                intent.setClass(Login.this, CheckName.class);
+                startActivity(intent);
             }
         });
 

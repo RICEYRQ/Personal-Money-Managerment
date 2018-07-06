@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.riceyrq.personalmoneymanagerment.acitvity.CheckName">
+
+    <TextView
+        android:id="@+id/title_checkName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:text="输入用户名"
+        android:textColor="#000"
+        android:textSize="23sp"
+        android:typeface="monospace" />
+
+    <RelativeLayout
+        android:id="@+id/rl_userName_cn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_checkName"
+        android:gravity="center"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/iv_userIconName_cn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+
+            android:paddingBottom="15dp"
+            android:paddingLeft="30dp"
+            android:paddingTop="15dp" />
+
+        <View
+            android:id="@+id/viewName_cn"
+            android:layout_width="1dip"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_userIconName_cn" />
+
+        <EditText
+            android:id="@+id/et_userName_cn"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/viewName_cn"
+            android:background="@null"
+            android:ems="19"
+            android:hint="  用户名"
+            android:inputType="textVisiblePassword"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/iv_unameClear_cn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:visibility="invisible"
+            android:background="@color/colorPrimaryDark"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_findPas_cn"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_userName_cn"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:text="下一步"
+        android:textColor="#fff"
+        android:background="@color/colorPrimary"
+        android:textSize="18sp" />
+
+
+
+</RelativeLayout>

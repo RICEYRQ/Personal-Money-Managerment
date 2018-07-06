@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.riceyrq.personalmoneymanagerment.acitvity.SetPas">
+
+    <TextView
+        android:id="@+id/title_setPas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:text="请输入新密码"
+        android:textColor="#000"
+        android:textSize="23sp"
+        android:typeface="monospace" />
+
+    <RelativeLayout
+        android:id="@+id/rl_userPassword_sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_setPas"
+        android:gravity="center"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/iv_userIconPwd_sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+
+            android:paddingBottom="15dp"
+            android:paddingLeft="30dp"
+            android:paddingTop="15dp" />
+
+        <View
+            android:id="@+id/viewPwd_sp"
+            android:layout_width="1dip"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_userIconPwd_sp" />
+
+        <EditText
+            android:id="@+id/et_password_sp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/viewPwd_sp"
+            android:background="@null"
+            android:ems="19"
+            android:hint=" 密码"
+            android:inputType="textPassword"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true">
+
+            <ImageView
+                android:id="@+id/iv_pwdClear_sp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:visibility="invisible"
+                android:background="@color/colorPrimaryDark"/>
+
+            <ImageView
+                android:id="@+id/iv_pwdShow_sp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:visibility="visible"
+                android:background="@color/colorPrimaryDark"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_userPassword2_sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_userPassword_sp"
+        android:gravity="center"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/iv_userIconPwd2_sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+
+            android:paddingBottom="15dp"
+            android:paddingLeft="30dp"
+            android:paddingTop="15dp" />
+
+        <View
+            android:id="@+id/viewPwd2_sp"
+            android:layout_width="1dip"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_userIconPwd2_sp" />
+
+        <EditText
+            android:id="@+id/et_password2_sp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/viewPwd2_sp"
+            android:background="@null"
+            android:ems="19"
+            android:hint=" 确认密码"
+            android:inputType="textPassword"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true">
+
+            <ImageView
+                android:id="@+id/iv_pwdClear2_sp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:visibility="invisible"
+                android:background="@color/colorPrimaryDark"/>
+
+            <ImageView
+                android:id="@+id/iv_pwdShow2_sp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:visibility="visible"
+                android:background="@color/colorPrimaryDark"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_findPas_sp"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_userPassword2_sp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:text="确定修改"
+        android:textColor="#fff"
+        android:background="@color/colorPrimary"
+        android:textSize="18sp" />
+
+</RelativeLayout>

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -210,7 +211,11 @@ public class Login extends Activity {
                                     editor.putString("pas", "");
                                 }
                                 editor.apply();
-                                ToastUtil.showToast(getApplicationContext(), "登录成功！");
+                                Intent intent = new Intent();
+                                intent.putExtra("username", user.getUserName());
+                                intent.setClass(Login.this, Main.class);
+                                startActivity(intent);
+                                Login.this.finish();
                             } else {
                                 ToastUtil.showToast(getApplicationContext(), "密码错误！");
                             }

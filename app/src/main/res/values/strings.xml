@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">Personal Money Managerment</string>
+    <string name="app_name">个人理财</string>
+
+
+    <string name="about">关于</string>
+    <string name="cancel">注销</string>
+    <string name="show">收支明细</string>
+    <string name="add">添加收支</string>
+    <string name="monthPic">月度报表</string>
+    <string name="yearPic">年度报表</string>
+    <string name="backup">备份</string>
+    <string name="restore">还原</string>
+    <string name="hit">哈尔滨工业大学</string>
+    <string name="yangrq">1153710303 杨荣奇</string>
+    <string name="zhangd">1153710312 张迪</string>
+    <string name="zhengl">1153710314 郑蕾</string>
+    <string name="panjz">1153710322 潘俊舟</string>
 </resources>

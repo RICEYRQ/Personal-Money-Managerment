@@ -18,7 +18,8 @@
         <activity android:name=".acitvity.Register" />
         <activity android:name=".acitvity.CheckName" />
         <activity android:name=".acitvity.CheckQueAus" />
-        <activity android:name=".acitvity.SetPas"></activity>
+        <activity android:name=".acitvity.SetPas" />
+        <activity android:name=".acitvity.Main"></activity>
     </application>
 
 </manifest>

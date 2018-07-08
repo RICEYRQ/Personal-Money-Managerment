@@ -84,6 +84,10 @@ public class CheckQueAus extends Activity {
         nextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(edPasAus.getText().length() == 0) {
+                    ToastUtil.showToast(getApplication(), "密保答案不能为空");
+                    return;
+                }
                 if (edPasAus.getText().toString().equals(pasAus)){
                     Intent intent1 = new Intent();
                     intent1.putExtra("username", username);

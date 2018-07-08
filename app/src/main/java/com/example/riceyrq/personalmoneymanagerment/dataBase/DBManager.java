@@ -166,6 +166,26 @@ public class DBManager {
         return messages;
     }
 
+    //获取day1到day2的收支信息
+    public List<Message> getMessage(int year1, int month1, int day1, int year2, int month2, int day2, String username) throws ParseException {
+        ArrayList<Message> messages = new ArrayList<>();
+        long firstDay = TimeUtil.getDayMillStart(year1, month1, day1);
+        long lastDay = TimeUtil.getDayMillStop(year2, month2, day2);
+        Cursor c = db.rawQuery("select * from message where username='" + username + "' and time>=" + firstDay + " and time<=" + lastDay, null);
+        while (c.moveToNext()){
+            Message message = new Message();
+            message.setUserName(c.getString(c.getColumnIndex("username")));
+            message.setInOrOut(c.getInt(c.getColumnIndex("inorout")));
+            message.setValue(c.getFloat(c.getColumnIndex("value")));
+            message.setTime(c.getLong(c.getColumnIndex("time")));
+            message.setOther(c.getString(c.getColumnIndex("other")));
+            message.setKind(c.getString(c.getColumnIndex("kind")));
+            messages.add(message);
+        }
+        c.close();
+        return messages;
+    }
+
     public void closeDB(){
         db.close();
     }

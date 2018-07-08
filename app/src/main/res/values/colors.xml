@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="loveBlue">#389af1</color>
+    <color name="loveGary">#666666</color>
     <color name="material_drawer_background">@color/md_white_1000</color>
     <color name="material_drawer_primary_text">@color/md_grey_800</color>
     <color name="material_drawer_secondary_text">@color/md_grey_800</color>

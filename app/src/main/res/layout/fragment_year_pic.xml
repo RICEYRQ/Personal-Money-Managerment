@@ -1,8 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <include layout="@layout/toolbar"/>
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/year_fraYear"
+            android:layout_gravity="left">
+
+        </Spinner>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="确定"
+                android:id="@+id/btn_confirm_fraYear"
+                android:background="@color/loveBlue"
+                android:textColor="#fff"/>
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="取消"
+                android:id="@+id/btn_cancel_fraYear"
+                android:layout_marginLeft="10dp"
+                android:textColor="#fff"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/lchart_fraYear">
+
+    </com.github.mikephil.charting.charts.LineChart>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_showYearIn_fraYear"
+        android:layout_marginLeft="20dp"
+        android:gravity="left"
+        android:textSize="23sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_showYearOut_fraYear"
+        android:layout_marginLeft="20dp"
+        android:gravity="left"
+        android:textSize="23sp"/>
+
+
+
+</LinearLayout>

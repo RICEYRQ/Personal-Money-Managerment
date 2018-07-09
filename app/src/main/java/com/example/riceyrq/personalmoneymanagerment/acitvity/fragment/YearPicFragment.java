@@ -129,7 +129,12 @@ public class YearPicFragment extends ToolbarFragment {
                 "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"
         };
         final LineData lineData = new LineData(dataSets);
-        lineChart.setData(lineData);
+        if (listIn.size() <= 0 && listOut.size() <= 0) {
+            lineChart.setData(null);
+        } else {
+            lineChart.setData(lineData);
+        }
+
 
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setGranularity(1f);  //最小轴步骤（间隔）为1
@@ -144,7 +149,7 @@ public class YearPicFragment extends ToolbarFragment {
         YAxis yAxisRight = lineChart.getAxisRight();
         yAxisRight.setEnabled(false);
         lineChart.getLegend().setEnabled(false);// 不显示图例
-        lineChart.getDescription().setEnabled(true);// 不显示描述
+        lineChart.getDescription().setEnabled(true);// 显示描述
         lineChart.setScaleEnabled(false);   // 取消缩放
         lineChart.setNoDataText("暂无数据");// 没有数据的时候默认显示的文字
         lineChart.setNoDataTextColor(Color.GRAY);

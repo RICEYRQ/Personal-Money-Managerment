@@ -185,6 +185,10 @@ public class ShowFragment extends ToolbarFragment {
             public void onClick(View v) {
                 if (inChange) {
                     //
+                    btnConfirm.setText("修改");
+                    btnCancel.setVisibility(View.INVISIBLE);
+                    inChange = false;
+                    closeAllSpinner();
                     int year11 = spYear1.getSelectedItemPosition() + 2000;
                     int month11 = spMonth1.getSelectedItemPosition() + 1;
                     int day11 = spDay1.getSelectedItemPosition() + 1;
@@ -209,10 +213,6 @@ public class ShowFragment extends ToolbarFragment {
                         ToastUtil.showToast(getActivity(), "不合法的输入！请修改！");
                         return;
                     }
-                    btnConfirm.setText("修改");
-                    btnCancel.setVisibility(View.INVISIBLE);
-                    inChange = false;
-                    closeAllSpinner();
                 } else {
                     btnConfirm.setText("确定");
                     btnCancel.setText("取消");
@@ -451,7 +451,7 @@ public class ShowFragment extends ToolbarFragment {
                     day1 = Data.daysNormal[month1 - 1];
                 }
             }
-            spDay1.setEnabled(true);
+            //spDay1.setEnabled(true);
             spDay1.setSelection(day1 - 1);
         }
     }
@@ -475,7 +475,7 @@ public class ShowFragment extends ToolbarFragment {
                     day2 = Data.daysNormal[month2 - 1];
                 }
             }
-            spDay2.setEnabled(true);
+            //spDay2.setEnabled(true);
             spDay2.setSelection(day2 - 1);
         }
     }

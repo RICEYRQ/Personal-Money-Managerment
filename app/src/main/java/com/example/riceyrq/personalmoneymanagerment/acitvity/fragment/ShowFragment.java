@@ -274,6 +274,7 @@ public class ShowFragment extends ToolbarFragment {
                     buttons[i].setText(Data.ins[i]);
                 }
                 chooseBtn = 0;
+                changeBtnsColor();
                 btn1.setBackgroundColor(getActivity().getColor(R.color.loveBlue));
                 refreshMes();
             }
@@ -288,6 +289,7 @@ public class ShowFragment extends ToolbarFragment {
                     buttons[i].setText(Data.outs[i]);
                 }
                 chooseBtn = 0;
+                changeBtnsColor();
                 btn1.setBackgroundColor(getActivity().getColor(R.color.loveBlue));
                 refreshMes();
             }
@@ -319,7 +321,7 @@ public class ShowFragment extends ToolbarFragment {
                         showMess.add(message);
                     }
                 } else {
-                    if (message.getInOrOut() == 1 && message.getKind().equals(Data.ins[chooseBtn])) {
+                    if (message.getInOrOut() == 1 && message.getKind().equals(Data.outs[chooseBtn])) {
                         showMess.add(message);
                     }
                 }

@@ -110,6 +110,34 @@ public class DBManager {
         }
     }
 
+    //清空数据库
+    public void truncate(String username) throws Exception{
+        db.beginTransaction();
+        try {
+            db.execSQL("delete from message where username=?",
+                    new Object[]{username});
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+    }
+
+    public void restore(String username, List<Message> list) throws Exception {
+        db.beginTransaction();
+        try {
+            db.execSQL("delete from message where username=?",
+                    new Object[]{username});
+            for (int i = 0; i < list.size(); i++) {
+                Message message = list.get(i);
+                db.execSQL("insert into message values(?,?,?,?,?,?)",
+                        new Object[]{message.getUserName(), message.getInOrOut(), message.getValue(), message.getTime(), message.getOther(), message.getKind()});
+            }
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+    }
+
     //获取全部收支信息
     public List<Message> getAllMessage() throws Exception{
         ArrayList<Message> messages = new ArrayList<>();

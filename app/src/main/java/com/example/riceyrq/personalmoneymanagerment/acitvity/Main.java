@@ -5,6 +5,8 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -17,12 +19,17 @@ import com.example.riceyrq.personalmoneymanagerment.acitvity.fragment.AddFragmen
 import com.example.riceyrq.personalmoneymanagerment.acitvity.fragment.MonthPicFragment;
 import com.example.riceyrq.personalmoneymanagerment.acitvity.fragment.ShowFragment;
 import com.example.riceyrq.personalmoneymanagerment.acitvity.fragment.YearPicFragment;
+import com.example.riceyrq.personalmoneymanagerment.dataBase.DBManager;
+import com.example.riceyrq.personalmoneymanagerment.define.Data;
+import com.example.riceyrq.personalmoneymanagerment.util.DataUtil;
 import com.example.riceyrq.personalmoneymanagerment.util.ToastUtil;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+
+import java.io.IOException;
 
 public class Main extends Activity implements Drawer.OnDrawerItemClickListener, GestureDetector.OnGestureListener{
 
@@ -37,6 +44,12 @@ public class Main extends Activity implements Drawer.OnDrawerItemClickListener, 
     private final long BACKUP = 8;
     private String username = "";
     private GestureDetector gestureDetector;
+    private int backupReturn = DataUtil.FILENOTFOUND;
+    private int restoreReturn = DataUtil.FILENOTFOUND;
+    private Handler handlerBackup;
+    private Handler handlerRestore;
+    private DBManager dbManager;
+    private long lastItem = SHOW;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +61,7 @@ public class Main extends Activity implements Drawer.OnDrawerItemClickListener, 
         }
 
         username = getIntent().getStringExtra("username");
+        dbManager = new DBManager(getApplicationContext());
 
         drawer = new DrawerBuilder()
                 .withActivity(this)
@@ -92,6 +106,36 @@ public class Main extends Activity implements Drawer.OnDrawerItemClickListener, 
 
         gestureDetector = new GestureDetector(Main.this, Main.this);
 
+        handlerBackup = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                if (msg.what == 0) {
+                    if (backupReturn == DataUtil.FILENOTFOUND || backupReturn == DataUtil.FILEWRITEERROR) {
+                        ToastUtil.showToast(getApplicationContext(), "备份出错！");
+                    } else if (backupReturn == DataUtil.FILEWRITEOK){
+                        ToastUtil.showToast(getApplicationContext(), "备份成功！");
+                    }
+                }
+            }
+        };
+
+        handlerRestore = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                if (msg.what == 0) {
+                    if (restoreReturn == DataUtil.FILENOTFOUND) {
+                        ToastUtil.showToast(getApplicationContext(), "备份文件不存在！");
+                    } else if (restoreReturn == DataUtil.FILEREADOK) {
+                        ToastUtil.showToast(getApplicationContext(), "还原成功！");
+                    } else {
+                        ToastUtil.showToast(getApplicationContext(), "还原失败！");
+                    }
+                    displayFragment(new ShowFragment());
+                }
+            }
+        };
 
 
 
@@ -132,6 +176,7 @@ public class Main extends Activity implements Drawer.OnDrawerItemClickListener, 
     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
         if (drawerItem.getIdentifier() == ABOUT) {
             displayFragment(new AboutFragment());
+            lastItem = ABOUT;
         } else if (drawerItem.getIdentifier() == CANCEL) {
             Intent intent = new Intent();
             intent.setClass(Main.this, Login.class);
@@ -139,24 +184,55 @@ public class Main extends Activity implements Drawer.OnDrawerItemClickListener, 
             Main.this.finish();
         } else if (drawerItem.getIdentifier() == SHOW) {
             displayFragment(new ShowFragment());
+            lastItem = SHOW;
         } else if (drawerItem.getIdentifier() == ADD) {
             displayFragment(new AddFragment());
+            lastItem = ADD;
         } else if (drawerItem.getIdentifier() == MONTHPIC) {
             displayFragment(new MonthPicFragment());
+            lastItem = MONTHPIC;
         } else if (drawerItem.getIdentifier() == YEARPIC) {
             displayFragment(new YearPicFragment());
+            lastItem = YEARPIC;
         } else if (drawerItem.getIdentifier() == BACKUP) {
-
+            backUp();
+            drawer.setSelection(lastItem);
+            drawer.closeDrawer();
         } else if (drawerItem.getIdentifier() == RESTORE) {
-
+            restore();
         }
 
         return true;
     }
 
+    private void backUp(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    backupReturn = DataUtil.backupDatabase(Main.this, dbManager, username);
+                } catch (IOException e) {
+                    backupReturn = DataUtil.FILEWRITEERROR;
+                }
+                handlerBackup.sendEmptyMessage(0);
+            }
+        }).start();
+    }
+
+    private void restore(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                restoreReturn = DataUtil.restoreDatabase(Main.this, dbManager, username);
+                handlerRestore.sendEmptyMessage(0);
+            }
+        }).start();
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        dbManager.closeDB();
     }
 
     @Override

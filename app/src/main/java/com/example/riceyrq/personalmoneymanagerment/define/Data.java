@@ -9,4 +9,6 @@ public class Data {
     public static final String outs[] = {
             "全部", "日常", "购物", "理财", "其他"
     };
+    public static final String smallSplit = "&&&";
+    public static final String bigSplit = "###";
 }

@@ -126,14 +126,14 @@ public class ShowFragment extends ToolbarFragment {
         private List<Message> messageList;
 
         class ViewHolder extends RecyclerView.ViewHolder {
-            ImageView imageView;
+            TextView inOrOut;
             TextView value;
             TextView other;
             TextView kind;
             TextView time;
             public ViewHolder(View itemView) {
                 super(itemView);
-                imageView = itemView.findViewById(R.id.iv_item);
+                inOrOut = itemView.findViewById(R.id.tv_item);
                 value = itemView.findViewById(R.id.tv_value_item);
                 other = itemView.findViewById(R.id.tv_other_item);
                 kind = itemView.findViewById(R.id.tv_kind_item);
@@ -161,11 +161,15 @@ public class ShowFragment extends ToolbarFragment {
             holder.value.setText(String.valueOf(message.getValue()));
             holder.kind.setText(message.getKind());
             holder.other.setText(message.getOther());
-            holder.time.setText(TimeUtil.stampToDate(message.getTime()));
+            String time = TimeUtil.stampToDate(message.getTime());
+            String[] txTime = time.split(" ");
+            holder.time.setText(txTime[0] + "\n" + txTime[1]);
             if (message.getInOrOut() == 0) {
-                holder.imageView.setBackgroundColor(getActivity().getColor(R.color.loveBlue));
+                holder.inOrOut.setBackgroundColor(getActivity().getColor(R.color.colorAccent));
+                holder.inOrOut.setText("收入");
             } else if (message.getInOrOut() == 1) {
-                holder.imageView.setBackgroundColor(getActivity().getColor(R.color.loveGary));
+                holder.inOrOut.setBackgroundColor(getActivity().getColor(R.color.loveBlue));
+                holder.inOrOut.setText("支出");
             }
         }
 

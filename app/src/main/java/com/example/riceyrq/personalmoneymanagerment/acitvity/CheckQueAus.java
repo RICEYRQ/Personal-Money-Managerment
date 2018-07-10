@@ -24,6 +24,7 @@ public class CheckQueAus extends Activity {
     private EditText edPasAus;
     private ImageView ivPasAusCancel;
     private Button nextStep;
+    private ImageView back;
     private DBManager dbManager;
     private String pasQue = "";
     private String pasAus = "";
@@ -42,6 +43,7 @@ public class CheckQueAus extends Activity {
         edPasAus = (EditText) findViewById(R.id.et_pasAus_cqa);
         ivPasAusCancel = (ImageView) findViewById(R.id.iv_pasAusClear_cqa);
         nextStep = (Button) findViewById(R.id.btn_findPas_cqa);
+        back = (ImageView) findViewById(R.id.back_checkQueAus);
 
         dbManager = new DBManager(getApplicationContext());
 
@@ -97,6 +99,13 @@ public class CheckQueAus extends Activity {
                 } else {
                     ToastUtil.showToast(getApplicationContext(), "密保答案错误！");
                 }
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CheckQueAus.this.finish();
             }
         });
     }

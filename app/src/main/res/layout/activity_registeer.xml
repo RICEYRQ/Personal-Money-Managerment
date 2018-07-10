@@ -9,6 +9,16 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".acitvity.Register">
 
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/back_register"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/back"
+        />
+
+
     <TextView
         android:id="@+id/title_register"
         android:layout_width="wrap_content"
@@ -25,19 +35,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/title_register"
-        android:gravity="center"
-        android:layout_marginLeft="35dp"
         android:layout_marginTop="20dp">
 
         <ImageView
             android:id="@+id/iv_userIconName_rg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_centerVertical="true"
-
-            android:paddingBottom="15dp"
-            android:paddingLeft="30dp"
-            android:paddingTop="15dp" />
+            android:src="@drawable/user" />
 
         <View
             android:id="@+id/viewName_rg"
@@ -45,7 +50,8 @@
             android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/iv_userIconName" />
+            android:layout_toRightOf="@id/iv_userIconName_rg"
+            android:background="#AAA"/>
 
         <EditText
             android:id="@+id/et_userName_rg"
@@ -53,7 +59,7 @@
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/viewName"
+            android:layout_toRightOf="@id/viewName_rg"
             android:background="@null"
             android:ems="19"
             android:hint="  用户名"
@@ -67,8 +73,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:visibility="invisible"
-            android:background="@color/colorPrimaryDark"/>
+            android:src="@drawable/delete"
+            android:visibility="invisible"/>
 
     </RelativeLayout>
 
@@ -77,19 +83,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/rl_userName_rg"
-        android:gravity="center"
-        android:layout_marginLeft="35dp"
         android:layout_marginTop="20dp">
 
         <ImageView
             android:id="@+id/iv_userIconPwd_rg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_centerVertical="true"
-
-            android:paddingBottom="15dp"
-            android:paddingLeft="30dp"
-            android:paddingTop="15dp" />
+            android:src="@drawable/password" />
 
         <View
             android:id="@+id/viewPwd_rg"
@@ -97,7 +98,8 @@
             android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/iv_userIconName" />
+            android:background="#AAA"
+            android:layout_toRightOf="@id/iv_userIconPwd_rg" />
 
         <EditText
             android:id="@+id/et_password_rg"
@@ -105,7 +107,7 @@
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/viewName"
+            android:layout_toRightOf="@id/viewPwd_rg"
             android:background="@null"
             android:ems="19"
             android:hint=" 密码"
@@ -124,17 +126,17 @@
                 android:layout_height="20dp"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
-                android:visibility="invisible"
-                android:background="@color/colorPrimaryDark"/>
+                android:src="@drawable/delete"
+                android:visibility="invisible"/>
 
             <ImageView
                 android:id="@+id/iv_pwdShow_rg"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_centerVertical="true"
+                android:src="@drawable/eye_gray"
                 android:layout_marginRight="20dp"
-                android:visibility="visible"
-                android:background="@color/colorPrimaryDark"/>
+                android:visibility="visible"/>
 
         </LinearLayout>
 
@@ -145,27 +147,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/rl_userPassword_rg"
-        android:gravity="center"
-        android:layout_marginLeft="35dp"
         android:layout_marginTop="20dp">
 
         <ImageView
             android:id="@+id/iv_userIconPwd2_rg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_centerVertical="true"
-
-            android:paddingBottom="15dp"
-            android:paddingLeft="30dp"
-            android:paddingTop="15dp" />
+            android:src="@drawable/password" />
 
         <View
             android:id="@+id/viewPwd2_rg"
             android:layout_width="1dip"
             android:layout_height="20dp"
             android:layout_centerVertical="true"
+            android:background="#AAA"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/iv_userIconName" />
+            android:layout_toRightOf="@id/iv_userIconPwd2_rg" />
 
         <EditText
             android:id="@+id/et_password2_rg"
@@ -173,7 +171,7 @@
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/viewName"
+            android:layout_toRightOf="@id/viewPwd2_rg"
             android:background="@null"
             android:ems="19"
             android:hint=" 确认密码"
@@ -192,17 +190,17 @@
                 android:layout_height="20dp"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
-                android:visibility="invisible"
-                android:background="@color/colorPrimaryDark"/>
+                android:src="@drawable/delete"
+                android:visibility="invisible"/>
 
             <ImageView
                 android:id="@+id/iv_pwdShow2_rg"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_centerVertical="true"
+                android:src="@drawable/eye_gray"
                 android:layout_marginRight="20dp"
-                android:visibility="visible"
-                android:background="@color/colorPrimaryDark"/>
+                android:visibility="visible"/>
 
         </LinearLayout>
 
@@ -213,27 +211,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/rl_userPassword2_rg"
-        android:gravity="center"
-        android:layout_marginLeft="35dp"
         android:layout_marginTop="20dp">
 
         <ImageView
             android:id="@+id/iv_pasQue_rg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_centerVertical="true"
-
-            android:paddingBottom="15dp"
-            android:paddingLeft="30dp"
-            android:paddingTop="15dp" />
+            android:src="@drawable/question"/>
 
         <View
             android:id="@+id/viewPasQue_rg"
             android:layout_width="1dip"
             android:layout_height="20dp"
             android:layout_centerVertical="true"
+            android:background="#AAA"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/iv_userIconName" />
+            android:layout_toRightOf="@id/iv_pasQue_rg" />
 
         <EditText
             android:id="@+id/et_pasQue_rg"
@@ -241,7 +235,7 @@
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/viewName"
+            android:layout_toRightOf="@id/viewPasQue_rg"
             android:background="@null"
             android:ems="19"
             android:hint="  密保问题"
@@ -254,6 +248,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
+            android:src="@drawable/delete"
             android:visibility="invisible"
             android:background="@color/colorPrimaryDark"/>
 
@@ -264,27 +259,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/rl_pasQue_rg"
-        android:gravity="center"
-        android:layout_marginLeft="35dp"
         android:layout_marginTop="20dp">
 
         <ImageView
             android:id="@+id/iv_pasAus_rg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_centerVertical="true"
-
-            android:paddingBottom="15dp"
-            android:paddingLeft="30dp"
-            android:paddingTop="15dp" />
+            android:src="@drawable/answer"/>
 
         <View
             android:id="@+id/pasAus_rg"
             android:layout_width="1dip"
             android:layout_height="20dp"
             android:layout_centerVertical="true"
+            android:background="#AAA"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/iv_userIconName" />
+            android:layout_toRightOf="@id/iv_pasAus_rg" />
 
         <EditText
             android:id="@+id/et_pasAus_rg"
@@ -292,7 +283,7 @@
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/viewName"
+            android:layout_toRightOf="@id/pasAus_rg"
             android:background="@null"
             android:ems="19"
             android:hint="  密保答案"
@@ -305,6 +296,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
+            android:src="@drawable/delete"
             android:visibility="invisible"
             android:background="@color/colorPrimaryDark"/>
 

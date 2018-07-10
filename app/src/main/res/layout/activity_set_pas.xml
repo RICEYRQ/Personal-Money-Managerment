@@ -9,6 +9,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.riceyrq.personalmoneymanagerment.acitvity.SetPas">
 
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/back_setPas"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/back"
+        />
+
     <TextView
         android:id="@+id/title_setPas"
         android:layout_width="wrap_content"
@@ -31,13 +40,10 @@
 
         <ImageView
             android:id="@+id/iv_userIconPwd_sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_centerVertical="true"
-
-            android:paddingBottom="15dp"
-            android:paddingLeft="30dp"
-            android:paddingTop="15dp" />
+            android:src="@drawable/password"/>
 
         <View
             android:id="@+id/viewPwd_sp"
@@ -45,6 +51,7 @@
             android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
+            android:background="#AAA"
             android:layout_toRightOf="@id/iv_userIconPwd_sp" />
 
         <EditText
@@ -64,6 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_centerVertical="true"
             android:layout_alignParentRight="true">
 
             <ImageView
@@ -73,7 +81,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
                 android:visibility="invisible"
-                android:background="@color/colorPrimaryDark"/>
+                android:src="@drawable/delete"/>
 
             <ImageView
                 android:id="@+id/iv_pwdShow_sp"
@@ -82,7 +90,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
                 android:visibility="visible"
-                android:background="@color/colorPrimaryDark"/>
+                android:src="@drawable/eye_gray"/>
 
         </LinearLayout>
 
@@ -99,13 +107,10 @@
 
         <ImageView
             android:id="@+id/iv_userIconPwd2_sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_centerVertical="true"
-
-            android:paddingBottom="15dp"
-            android:paddingLeft="30dp"
-            android:paddingTop="15dp" />
+            android:src="@drawable/password" />
 
         <View
             android:id="@+id/viewPwd2_sp"
@@ -113,6 +118,7 @@
             android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
+            android:background="#AAA"
             android:layout_toRightOf="@id/iv_userIconPwd2_sp" />
 
         <EditText
@@ -132,6 +138,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_centerVertical="true"
             android:layout_alignParentRight="true">
 
             <ImageView
@@ -140,8 +147,8 @@
                 android:layout_height="20dp"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
-                android:visibility="invisible"
-                android:background="@color/colorPrimaryDark"/>
+                android:src="@drawable/delete"
+                android:visibility="invisible"/>
 
             <ImageView
                 android:id="@+id/iv_pwdShow2_sp"
@@ -149,8 +156,8 @@
                 android:layout_height="20dp"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
-                android:visibility="visible"
-                android:background="@color/colorPrimaryDark"/>
+                android:src="@drawable/eye_gray"
+                android:visibility="visible"/>
 
         </LinearLayout>
 

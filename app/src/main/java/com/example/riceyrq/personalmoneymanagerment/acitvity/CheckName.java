@@ -22,6 +22,7 @@ public class CheckName extends Activity {
     private EditText edUserName;
     private ImageView ivUserNameCancel;
     private Button nextStep;
+    private ImageView back;
     private DBManager dbManager;
 
     @Override
@@ -35,6 +36,7 @@ public class CheckName extends Activity {
         edUserName = (EditText) findViewById(R.id.et_userName_cn);
         ivUserNameCancel = (ImageView) findViewById(R.id.iv_unameClear_cn);
         nextStep = (Button) findViewById(R.id.btn_findPas_cn);
+        back = (ImageView) findViewById(R.id.back_checkName);
 
         dbManager = new DBManager(getApplicationContext());
 
@@ -109,6 +111,13 @@ public class CheckName extends Activity {
                         ToastUtil.showToast(getApplicationContext(), "用户名不存在！");
                     }
                 }
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CheckName.this.finish();
             }
         });
     }

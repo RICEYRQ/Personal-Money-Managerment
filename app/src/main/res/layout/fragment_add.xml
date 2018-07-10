@@ -119,6 +119,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
                 android:visibility="invisible"
+                android:src="@drawable/delete"
                 android:background="@color/colorPrimaryDark"/>
 
         </RelativeLayout>
@@ -164,6 +165,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
                 android:visibility="invisible"
+                android:src="@drawable/delete"
                 android:background="@color/colorPrimaryDark"/>
 
         </RelativeLayout>

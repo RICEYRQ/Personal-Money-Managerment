@@ -2,6 +2,7 @@ package com.example.riceyrq.personalmoneymanagerment.acitvity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.ImageView;
 import com.example.riceyrq.personalmoneymanagerment.R;
 import com.example.riceyrq.personalmoneymanagerment.dataBase.DBManager;
 import com.example.riceyrq.personalmoneymanagerment.define.User;
+import com.example.riceyrq.personalmoneymanagerment.util.BitUtil;
 import com.example.riceyrq.personalmoneymanagerment.util.ToastUtil;
 
 public class SetPas extends Activity {
@@ -28,6 +30,7 @@ public class SetPas extends Activity {
     private ImageView ivPas2Cancel;
     private ImageView ivPas2Show;
     private Button btnSetPas;
+    private ImageView back;
     private DBManager dbManager;
     private String username = "";
 
@@ -47,6 +50,7 @@ public class SetPas extends Activity {
         ivPas2Cancel = (ImageView) findViewById(R.id.iv_pwdClear2_sp);
         ivPas2Show = (ImageView) findViewById(R.id.iv_pwdShow2_sp);
         btnSetPas = (Button) findViewById(R.id.btn_findPas_sp);
+        back = (ImageView) findViewById(R.id.back_setPas);
 
         dbManager = new DBManager(getApplicationContext());
 
@@ -94,10 +98,12 @@ public class SetPas extends Activity {
                     //更换为密码隐藏状态
                     edPas1.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     //ivPasswordShow 更换为睁眼
+                    ivPas1Show.setImageDrawable(new BitmapDrawable(BitUtil.getBit(getApplicationContext(), R.drawable.eye_gray)));
                 } else {//密码不可见状态
                     //更换为密码可见状态
                     edPas1.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     //ivPasswordShow 更换为闭眼
+                    ivPas1Show.setImageDrawable(new BitmapDrawable(BitUtil.getBit(getApplicationContext(), R.drawable.eye_blue)));
                 }
                 edPas1.setSelection(select);
             }
@@ -144,10 +150,12 @@ public class SetPas extends Activity {
                     //更换为密码隐藏状态
                     edPas2.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     //ivPasswordShow 更换为睁眼
+                    ivPas2Show.setImageDrawable(new BitmapDrawable(BitUtil.getBit(getApplicationContext(), R.drawable.eye_gray)));
                 } else {//密码不可见状态
                     //更换为密码可见状态
                     edPas2.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     //ivPasswordShow 更换为闭眼
+                    ivPas2Show.setImageDrawable(new BitmapDrawable(BitUtil.getBit(getApplicationContext(), R.drawable.eye_blue)));
                 }
                 edPas2.setSelection(select);
             }
@@ -175,6 +183,13 @@ public class SetPas extends Activity {
                     ToastUtil.showToast(getApplicationContext(), "修改密码成功！");
                     SetPas.this.finish();
                 }
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SetPas.this.finish();
             }
         });
     }

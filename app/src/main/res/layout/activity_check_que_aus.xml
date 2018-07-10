@@ -9,6 +9,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".acitvity.CheckQueAus">
 
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/back_checkQueAus"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/back"
+        />
+
     <TextView
         android:id="@+id/title_checkQueAus"
         android:layout_width="wrap_content"
@@ -42,13 +51,10 @@
 
         <ImageView
             android:id="@+id/iv_pasAus_cqa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_centerVertical="true"
-
-            android:paddingBottom="15dp"
-            android:paddingLeft="30dp"
-            android:paddingTop="15dp" />
+            android:src="@drawable/answer" />
 
         <View
             android:id="@+id/pasAus_cqa"
@@ -56,6 +62,7 @@
             android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
+            android:background="#AAA"
             android:layout_toRightOf="@id/iv_pasAus_cqa" />
 
         <EditText
@@ -77,8 +84,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:visibility="invisible"
-            android:background="@color/colorPrimaryDark"/>
+            android:src="@drawable/delete"
+            android:visibility="invisible"/>
 
     </RelativeLayout>
 

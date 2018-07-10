@@ -70,30 +70,38 @@ public class Main extends Activity implements Drawer.OnDrawerItemClickListener, 
                 .addDrawerItems(
                         new PrimaryDrawerItem()
                             .withName(R.string.show)
-                            .withIdentifier(SHOW),
+                            .withIdentifier(SHOW)
+                            .withIcon(R.drawable.detail),
                         new PrimaryDrawerItem()
                             .withName(R.string.add)
-                            .withIdentifier(ADD),
+                            .withIdentifier(ADD)
+                            .withIcon(R.drawable.add),
                         new PrimaryDrawerItem()
                             .withName(R.string.monthPic)
-                            .withIdentifier(MONTHPIC),
+                            .withIdentifier(MONTHPIC)
+                            .withIcon(R.drawable.month),
                         new PrimaryDrawerItem()
                             .withName(R.string.yearPic)
                             .withIdentifier(YEARPIC)
+                            .withIcon(R.drawable.year)
                 )
                 .addStickyDrawerItems(
                         new PrimaryDrawerItem()
                             .withName(R.string.backup)
-                            .withIdentifier(BACKUP),
+                            .withIdentifier(BACKUP)
+                            .withIcon(R.drawable.backup),
                         new PrimaryDrawerItem()
                             .withName(R.string.restore)
-                            .withIdentifier(RESTORE),
+                            .withIdentifier(RESTORE)
+                            .withIcon(R.drawable.restore),
                         new PrimaryDrawerItem()
                             .withName(R.string.about)
-                            .withIdentifier(ABOUT),
+                            .withIdentifier(ABOUT)
+                            .withIcon(R.drawable.about),
                         new PrimaryDrawerItem()
                             .withName(R.string.cancel)
                             .withIdentifier(CANCEL)
+                            .withIcon(R.drawable.cancel)
                 )
                 .withOnDrawerItemClickListener(this)
                 .withActionBarDrawerToggle(true)

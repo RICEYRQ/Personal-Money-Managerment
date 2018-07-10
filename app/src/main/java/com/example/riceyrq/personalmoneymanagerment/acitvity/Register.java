@@ -1,9 +1,12 @@
 package com.example.riceyrq.personalmoneymanagerment.acitvity;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -17,6 +20,7 @@ import android.widget.ImageView;
 import com.example.riceyrq.personalmoneymanagerment.R;
 import com.example.riceyrq.personalmoneymanagerment.dataBase.DBManager;
 import com.example.riceyrq.personalmoneymanagerment.define.User;
+import com.example.riceyrq.personalmoneymanagerment.util.BitUtil;
 import com.example.riceyrq.personalmoneymanagerment.util.ToastUtil;
 
 import static com.example.riceyrq.personalmoneymanagerment.R.id.btn_register_rg;
@@ -35,6 +39,7 @@ public class Register extends Activity {
     private EditText edPasAus;
     private ImageView ivPasAusCancel;
     private Button register;
+    private ImageView back;
     private DBManager dbManager;
 
 
@@ -62,6 +67,7 @@ public class Register extends Activity {
         edPasAus = (EditText) findViewById(R.id.et_pasAus_rg);
         ivPasAusCancel = (ImageView) findViewById(R.id.iv_pasAusClear_rg);
         register = (Button) findViewById(btn_register_rg);
+        back = (ImageView) findViewById(R.id.back_register);
 
         dbManager = new DBManager(getApplicationContext());
 
@@ -124,6 +130,7 @@ public class Register extends Activity {
         });
 
         ivPasswordShow.setOnClickListener(new View.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View view) {
                 if (edPassword.getText().toString().equals("")){
@@ -135,10 +142,12 @@ public class Register extends Activity {
                     //更换为密码隐藏状态
                     edPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     //ivPasswordShow 更换为睁眼
+                    ivPasswordShow.setImageDrawable(new BitmapDrawable(BitUtil.getBit(getApplicationContext(), R.drawable.eye_gray)));
                 } else {//密码不可见状态
                     //更换为密码可见状态
                     edPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     //ivPasswordShow 更换为闭眼
+                    ivPasswordShow.setImageDrawable(new BitmapDrawable(BitUtil.getBit(getApplicationContext(), R.drawable.eye_blue)));
                 }
                 edPassword.setSelection(select);
             }
@@ -174,6 +183,7 @@ public class Register extends Activity {
         });
 
         ivPassword2Show.setOnClickListener(new View.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View view) {
                 if (edPassword2.getText().toString().equals("")){
@@ -185,10 +195,12 @@ public class Register extends Activity {
                     //更换为密码隐藏状态
                     edPassword2.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     //ivPasswordShow 更换为睁眼
+                    ivPassword2Show.setImageDrawable(new BitmapDrawable(BitUtil.getBit(getApplicationContext(), R.drawable.eye_gray)));
                 } else {//密码不可见状态
                     //更换为密码可见状态
                     edPassword2.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     //ivPasswordShow 更换为闭眼
+                    ivPassword2Show.setImageDrawable(new BitmapDrawable(BitUtil.getBit(getApplicationContext(), R.drawable.eye_blue)));
                 }
                 edPassword2.setSelection(select);
             }
@@ -295,6 +307,14 @@ public class Register extends Activity {
                         Register.this.finish();
                     }
                 }
+            }
+        });
+
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Register.this.finish();
             }
         });
 

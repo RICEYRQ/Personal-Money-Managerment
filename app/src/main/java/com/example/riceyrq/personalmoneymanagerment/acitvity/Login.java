@@ -1,8 +1,10 @@
 package com.example.riceyrq.personalmoneymanagerment.acitvity;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ import android.widget.TextView;
 import com.example.riceyrq.personalmoneymanagerment.R;
 import com.example.riceyrq.personalmoneymanagerment.dataBase.DBManager;
 import com.example.riceyrq.personalmoneymanagerment.define.User;
+import com.example.riceyrq.personalmoneymanagerment.util.BitUtil;
 import com.example.riceyrq.personalmoneymanagerment.util.ToastUtil;
 
 public class Login extends Activity {
@@ -132,6 +135,7 @@ public class Login extends Activity {
         });
 
         ivPasswordShow.setOnClickListener(new View.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View view) {
                 if (edPassword.getText().toString().equals("")){
@@ -143,10 +147,12 @@ public class Login extends Activity {
                     //更换为密码隐藏状态
                     edPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     //ivPasswordShow 更换为睁眼
+                    ivPasswordShow.setImageDrawable(new BitmapDrawable(BitUtil.getBit(getApplicationContext(), R.drawable.eye_gray)));
                 } else {//密码不可见状态
                     //更换为密码可见状态
                     edPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     //ivPasswordShow 更换为闭眼
+                    ivPasswordShow.setImageDrawable(new BitmapDrawable(BitUtil.getBit(getApplicationContext(), R.drawable.eye_blue)));
                 }
                 edPassword.setSelection(select);
             }
